@@ -20,7 +20,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="light">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('ecommerce-theme') || 'light';
+                const root = document.documentElement;
+                root.classList.remove('light', 'dark');
+                root.classList.add(theme);
+              } catch (e) {
+                document.documentElement.classList.add('light');
+              }
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <Providers>
           <div className="min-h-screen flex flex-col">

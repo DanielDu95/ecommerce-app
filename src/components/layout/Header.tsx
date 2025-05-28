@@ -5,6 +5,7 @@ import { useSession, signOut } from "next-auth/react";
 import { ShoppingCart, User, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useCartStore } from "@/features/cart/useCartStore";
 import { useState } from "react";
 
@@ -67,6 +68,9 @@ export function Header() {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+            <button className="">test</button>
             {/* Cart */}
             <Link href="/cart">
               <Button variant="ghost" size="sm" className="relative">

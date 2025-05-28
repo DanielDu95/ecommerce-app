@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+    <section className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden theme-transition">
       <div className="absolute inset-0 bg-black/20"></div>
       <div className="relative max-w-7xl mx-auto px-4 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -23,7 +23,7 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-gray-100"
+                className="bg-white text-black hover:bg-gray-100 theme-transition-fast"
                 asChild
               >
                 <Link href="/products">
@@ -34,7 +34,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-black"
+                className="border-white text-white hover:bg-white hover:text-black theme-transition-fast"
                 asChild
               >
                 <Link href="/categories">
@@ -64,16 +64,16 @@ export default function HeroSection() {
             <div className="aspect-square bg-brand-gradient rounded-full blur-3xl opacity-20"></div>
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="grid grid-cols-2 gap-4 w-full max-w-md">
-                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center">
+                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center theme-transition">
                   <ShoppingBag className="h-12 w-12 text-purple-400" />
                 </div>
-                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center">
+                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center theme-transition">
                   <div className="h-12 w-12 bg-brand-gradient rounded-lg"></div>
                 </div>
-                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center">
+                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center theme-transition">
                   <div className="h-12 w-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-lg"></div>
                 </div>
-                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center">
+                <div className="aspect-square bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-4 flex items-center justify-center theme-transition">
                   <div className="h-12 w-12 bg-gradient-to-br from-green-400 to-emerald-400 rounded-lg"></div>
                 </div>
               </div>
