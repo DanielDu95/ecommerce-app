@@ -56,12 +56,12 @@
 
 @layer base {
   * {
-    border-color: hsl(var(--color-border));
+    border-color: var(--color-border);
   }
 
   body {
-    background-color: hsl(var(--color-background));
-    color: hsl(var(--color-foreground));
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
@@ -88,16 +88,16 @@
   .bg-brand-gradient {
     background: linear-gradient(
       135deg,
-      hsl(var(--color-brand-gradient-from)),
-      hsl(var(--color-brand-gradient-to))
+      var(--color-brand-gradient-from),
+      var(--color-brand-gradient-to)
     );
   }
 
   .text-brand-gradient {
     background: linear-gradient(
       135deg,
-      hsl(var(--color-brand-gradient-from)),
-      hsl(var(--color-brand-gradient-to))
+      var(--color-brand-gradient-from),
+      var(--color-brand-gradient-to)
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -107,7 +107,7 @@
   /* Focus styles */
   .focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px hsl(var(--color-ring));
+    box-shadow: 0 0 0 2px var(--color-ring);
   }
 
   /* Theme transition utilities */
@@ -205,18 +205,18 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--color-muted));
+  background: var(--color-muted);
   transition: background-color 0.2s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--color-muted-foreground));
+  background: var(--color-muted-foreground);
   border-radius: 4px;
   transition: background-color 0.2s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--color-foreground));
+  background: var(--color-foreground);
 }
 
 /* Animation keyframes */

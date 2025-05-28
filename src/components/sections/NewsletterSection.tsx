@@ -44,7 +44,7 @@ export default function NewsletterSection() {
   }
 
   return (
-    <section className="py-16 px-4 bg-gray-900 text-white">
+    <section className="py-16 px-4 bg-background text-foreground">
       <div className="max-w-2xl mx-auto text-center">
         <div className="flex justify-center mb-6">
           <div className="bg-purple-600 rounded-full p-4">

@@ -70,7 +70,7 @@ export function Header() {
           <div className="flex items-center space-x-4">
             {/* Theme Toggle */}
             <ThemeToggle />
-            <button className="">test</button>
+
             {/* Cart */}
             <Link href="/cart">
               <Button variant="ghost" size="sm" className="relative">
