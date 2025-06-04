@@ -7,26 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  CONSUMER
+  SELLER
+  ADMIN
+}
+
 model User {
   id        String    @id @default(cuid())
   email     String    @unique
   name      String?
   password  String?
+  role      Role      @default(CONSUMER)
   products  Product[]
   orders    Order[]
   createdAt DateTime  @default(now())
 }
 
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
 model Product {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
   description String?
   price       Float
   image       String?
-  inStock     Boolean  @default(true)
-  user        User     @relation(fields: [userId], references: [id])
+  inStock     Boolean   @default(true)
+  user        User      @relation(fields: [userId], references: [id])
   userId      String
-  createdAt   DateTime @default(now())
+  createdAt   DateTime  @default(now())
+  category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  String?
 }
 
 model Order {
