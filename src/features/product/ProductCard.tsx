@@ -18,7 +18,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const handleAddToCart = () => {
     addItem({
       id: product.id,
-      name: product.name,
+      name: product.title,
       price: product.price,
       image: product.image,
     });
@@ -30,7 +30,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="relative aspect-square overflow-hidden rounded-t-lg">
           <Image
             src={product.image || "/placeholder.svg?height=300&width=300"}
-            alt={product.name}
+            alt={product.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
@@ -49,7 +49,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="p-4">
           <Link href={`/products/${product.id}`}>
             <h3 className="font-semibold text-gray-900 mb-2 hover:text-purple-600 transition-colors line-clamp-2">
-              {product.name}
+              {product.title}
             </h3>
           </Link>
 
@@ -58,11 +58,6 @@ export function ProductCard({ product }: ProductCardProps) {
               <span className="text-lg font-bold text-gray-900">
                 ${product.price}
               </span>
-              {product.originalPrice && (
-                <span className="text-sm text-gray-500 line-through">
-                  ${product.originalPrice}
-                </span>
-              )}
             </div>
           </div>
 

@@ -20,7 +20,7 @@ export default function FeaturedProducts({
           </p>
         </div>
 
-        <ProductList limit={8} featured={true} />
+        <ProductList limit={8} />
       </div>
     </section>
   );

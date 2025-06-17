@@ -1,41 +1,42 @@
 // app/api/products/[id]/route.ts
 
-import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
+import {
+  getProductById,
+  updateProduct,
+  deleteProduct,
+} from "@/features/product/productService";
 
-// GET single product by ID
+// GET /api/products/:id
 export async function GET(
-  request: NextRequest,
+  _req: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const { id } = params;
-
-  const product = await prisma.product.findUnique({
-    where: { id },
-    include: { user: true, category: true },
-  });
-
-  if (!product) {
-    return NextResponse.json({ message: "Product not found" }, { status: 404 });
+  try {
+    const product = await getProductById(params.id);
+    if (!product) {
+      return NextResponse.json(
+        { message: "Product not found" },
+        { status: 404 },
+      );
+    }
+    return NextResponse.json({ message: "Product fetched", data: product });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Error fetching product", error },
+      { status: 500 },
+    );
   }
-
-  return NextResponse.json({ message: "Fetched product", data: product });
 }
 
-// UPDATE product
-export async function PUT(
-  request: NextRequest,
+// PATCH /api/products/:id
+export async function PATCH(
+  req: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const { id } = params;
-  const body = await request.json();
-
   try {
-    const updated = await prisma.product.update({
-      where: { id },
-      data: body,
-    });
-
+    const body = await req.json();
+    const updated = await updateProduct(params.id, body);
     return NextResponse.json({ message: "Product updated", data: updated });
   } catch (error) {
     return NextResponse.json(
@@ -45,16 +46,14 @@ export async function PUT(
   }
 }
 
-// DELETE product
+// DELETE /api/products/:id
 export async function DELETE(
-  request: NextRequest,
+  _req: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const { id } = params;
-
   try {
-    await prisma.product.delete({ where: { id } });
-    return NextResponse.json({ message: "Product deleted" });
+    const deleted = await deleteProduct(params.id);
+    return NextResponse.json({ message: "Product deleted", data: deleted });
   } catch (error) {
     return NextResponse.json(
       { message: "Error deleting product", error },
