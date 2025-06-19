@@ -6,10 +6,10 @@ import Link from "next/link";
 import { formatPrice } from "@/lib/utils"; // optional price formatter
 
 export default async function CartPage() {
-  const cartItems = await getCartItems(); // Fetch from DB or session
+  const cartItems = await getCartItems("cmbp5jz4s0004v536zm2s8e52"); // Fetch from DB or session
 
   const total = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + item.product.price * item.quantity,
     0,
   );
 
@@ -38,23 +38,23 @@ export default async function CartPage() {
           >
             <div className="flex items-center gap-4">
               <Image
-                src={item.imageUrl}
-                alt={item.name}
+                src={item.product.image || ""}
+                alt={item.product.title}
                 width={80}
                 height={80}
                 className="rounded"
               />
               <div>
-                <h2 className="font-medium">{item.name}</h2>
+                <h2 className="font-medium">{item.product.title}</h2>
                 <p className="text-sm text-gray-500">
                   Quantity: {item.quantity}
                 </p>
               </div>
             </div>
             <div className="text-right">
-              <p className="font-semibold">{formatPrice(item.price)}</p>
+              <p className="font-semibold">{formatPrice(item.product.price)}</p>
               <p className="text-sm text-gray-500">
-                Subtotal: {formatPrice(item.price * item.quantity)}
+                Subtotal: {formatPrice(item.product.price * item.quantity)}
               </p>
             </div>
           </div>
