@@ -8,7 +8,7 @@ interface ProductListProps {
   title?: string;
 }
 
-export async function ProductList({ limit = 6, title }: ProductListProps) {
+export async function ProductList({ limit = 8, title }: ProductListProps) {
   const productsFromDb = await prisma.product.findMany({
     take: limit,
     orderBy: {
