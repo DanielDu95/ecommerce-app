@@ -10,10 +10,11 @@ import {
 // GET /api/products/:id
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { id: string } },
+  context: { params: { id: string } },
 ) {
+  const { id } = context.params;
   try {
-    const product = await getProductById(params.id);
+    const product = await getProductById(id);
     if (!product) {
       return NextResponse.json(
         { message: "Product not found" },
