@@ -1,5 +1,3 @@
-// app/api/products/[id]/route.ts
-
 import { NextRequest, NextResponse } from "next/server";
 import {
   getProductById,
@@ -7,11 +5,10 @@ import {
   deleteProduct,
 } from "@/features/product/productService";
 
+type ParamsContext = { params: { id: string } };
+
 // GET /api/products/:id
-export async function GET(
-  _req: NextRequest,
-  context: { params: { id: string } },
-) {
+export async function GET(_req: NextRequest, context: ParamsContext) {
   const { id } = context.params;
   try {
     const product = await getProductById(id);
@@ -31,13 +28,10 @@ export async function GET(
 }
 
 // PATCH /api/products/:id
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } },
-) {
+export async function PATCH(req: NextRequest, context: ParamsContext) {
   try {
     const body = await req.json();
-    const updated = await updateProduct(params.id, body);
+    const updated = await updateProduct(context.params.id, body);
     return NextResponse.json({ message: "Product updated", data: updated });
   } catch (error) {
     return NextResponse.json(
@@ -48,12 +42,9 @@ export async function PATCH(
 }
 
 // DELETE /api/products/:id
-export async function DELETE(
-  _req: NextRequest,
-  { params }: { params: { id: string } },
-) {
+export async function DELETE(_req: NextRequest, context: ParamsContext) {
   try {
-    const deleted = await deleteProduct(params.id);
+    const deleted = await deleteProduct(context.params.id);
     return NextResponse.json({ message: "Product deleted", data: deleted });
   } catch (error) {
     return NextResponse.json(

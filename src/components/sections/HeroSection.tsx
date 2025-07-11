@@ -34,7 +34,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-black theme-transition-fast"
+                className="border-white text-black hover:bg-white hover:text-black theme-transition-fast"
                 asChild
               >
                 <Link href="/categories">
